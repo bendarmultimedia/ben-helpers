@@ -1,7 +1,7 @@
 # Helpers
 Helper classes in PHP
 
-![alt text](https://assets.bendar.eu/docs/Helpers/helpers.png)
+![Bendar Helpers](https://assets.bendar.eu/docs/Helpers/helpers2.png)
 
 Repo of useful PHP classes.
 You can read documentation in [wiki of this project](https://github.com/bendarmultimedia/ben-helpers/wiki).
