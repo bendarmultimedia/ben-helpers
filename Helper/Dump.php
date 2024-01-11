@@ -15,7 +15,6 @@ class Dump
     private $assetsAreDrown = false;
     private $icons = false;
     private $jQueryCDN = 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js';
-    // private $jQueryCDN = '';
     private $iconUp = '<i class="fas fa-caret-square-up"></i>';
     private $iconDown = '<i class="fas fa-caret-square-down"></i>';
     private $stream = '';
@@ -107,7 +106,7 @@ class Dump
         }
         $this->styles = self::$staticStyles;
 
-        $rotationSript = ($this->icons) ? "
+        $rotationScript = ($this->icons) ? "
             rotation += 180;
             var icon = $(this).prev().children('.dump-dropdown');
             icon.rotate(rotation);
@@ -125,13 +124,12 @@ class Dump
         };
         }
         $(document).ready(function(){
-            // $('pre.code').hide();
             $('.showCode').show();
 
             $('.dumpedVar .var_desc').unbind('click').click(function(event){
                 event.stopPropagation();
                 $(this).next().stop(true, true).slideToggle(200, function(){
-                " . $rotationSript . "
+                " . $rotationScript . "
                 });
             });
         });
@@ -159,7 +157,6 @@ class Dump
         }
         ob_start();
         var_dump($var);
-        // $show = ($show) ? ' style="display: block;"' : '';
         $show = ($show) ? 'showCode' : '';
         $result .= "<pre class='code $show'>";
         $result .= ob_get_clean();
@@ -233,12 +230,9 @@ class Dump
         } else {
             $result .= '<div class="var_desc">Zmienna: <div class="dump-dropdown">' . $this->iconDown . '</div></div>';
         }
-        // ob_start();
-        // $show = ($show) ? ' style="display: block;"' : '';
         $show = ($show) ? 'showCode' : '';
         $result .= "<pre class='code $show'>";
         $result .= $varStr;
-        // $result .= ob_get_clean();
         $result .= "</pre>";
         $result .= "</div>";
         $this->stream .= $result;
@@ -267,11 +261,8 @@ class Dump
         } else {
             $result .= '<div class="var_desc">Variable:';
         }
-        // ob_start();
-        // $show = ($show) ? ' style="display: block;"' : '';
         $result .= "<pre class='code showCode'>";
         $result .= $varStr;
-        // $result .= ob_get_clean();
         $result .= "</pre>";
         $result .= "</div>";
         if ($show) {
@@ -315,13 +306,12 @@ class Dump
         }
         $this->stream = '<span class="dumpTime">== ' . date('Y-m-d H:i') . ': ==</span>'
         . $this->errors . '<br>' . $this->stream;
-        // $this->d(scandir($this->file), 'files', true);
         $fp = fopen($this->file, 'a+');
         fwrite($fp, $this->stream);
         fclose($fp);
     }
 
-    public static function showPHPerros()
+    public static function showPHPerrors()
     {
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
